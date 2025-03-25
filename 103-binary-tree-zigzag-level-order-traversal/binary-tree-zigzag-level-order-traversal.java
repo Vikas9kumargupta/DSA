@@ -18,28 +18,27 @@ class Solution {
 
         List<List<Integer>> list = new ArrayList<>();
         if(root == null) return list;
-        Queue<TreeNode> q= new LinkedList<>();
+        
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-
-        boolean leftToRight = true;
+        boolean lToR = true;
 
         while(!q.isEmpty()){
             int size = q.size();
             List<Integer> ls = new ArrayList<>();
             for(int i = 0; i<size; i++){
                 TreeNode node = q.poll();
-                if(leftToRight){
+                if(lToR){
                     ls.addLast(node.val);
                 }else{
-                    ls.addFirst(node.val);//Reverse Order
+                    ls.addFirst(node.val);
                 }
-                if (node.left != null) q.offer(node.left);
-                if (node.right != null) q.offer(node.right);
+                if(node.left!=null) q.add(node.left);
+                if(node.right != null) q.add(node.right);
             }
             list.add(ls);
-            leftToRight = !leftToRight;
+            lToR = !lToR;
         }
         return list;
-        
     }
 }
