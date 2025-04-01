@@ -13,14 +13,14 @@ class Solution {
                     continue;
                 }
                 if (i == 0 && j == 0) continue;
-                
+
                 int up = 0;
                 int left = 0;
 
                 if (i > 0) up = dp[i - 1][j];
                 if (j > 0) left = dp[i][j - 1];
 
-                dp[i][j] += up + left;
+                dp[i][j] = up + left;
             }
         }
         return dp[n - 1][m - 1];
